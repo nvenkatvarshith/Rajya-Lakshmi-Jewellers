@@ -1,0 +1,42 @@
+body{
+    text-transform: uppercase;
+}
+
+ul li {
+    position: relative;
+}
+
+ul li::after {
+    content: '';
+    position: absolute;
+    width: 0; 
+    height: 1px;  
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: width 0.3s 0s ease; 
+}
+
+ul li:hover::after {
+    width: 100%;    
+}
+
+.category{
+    position: relative;
+    cursor: pointer;
+}
+
+.category::after{
+    content: "";
+    position: absolute;
+    width: 0; 
+    height: 3px;  
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 0, 0, 1);
+    transition: width 0.3s 0s ease; 
+}
+
+.category:hover::after {
+    width: 100%;    
+}
