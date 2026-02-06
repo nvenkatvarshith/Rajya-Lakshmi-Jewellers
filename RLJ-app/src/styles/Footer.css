@@ -1,0 +1,42 @@
+#header-subscribe{
+    text-transform: uppercase;
+}
+
+#subscribe:hover{
+    background-color: #fff;
+    color: #000;
+    transition: background-color,color 0.4s 0s ease;
+}
+
+.footer ul li a{
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.footer ul li a::after{
+    content: "";
+    width: 0;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: width 0.3s 0s ease;
+}
+
+.footer ul li a:hover::after{
+    width: 100%;
+}
+
+.fa-brands:hover{
+    color:#D50032;
+    cursor: pointer;
+}
+
+.redirect::after{
+    content: " ↗"; 
+    font-size: 1em;
+}

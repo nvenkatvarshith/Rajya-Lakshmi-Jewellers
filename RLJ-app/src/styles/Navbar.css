@@ -1,12 +1,17 @@
-body{
+.navbar-container{
     text-transform: uppercase;
 }
 
-ul li {
+.navbar-nav li {
     position: relative;
 }
 
-ul li::after {
+.navbar-nav li:hover{
+    font-weight: bold;
+    transition: font-weight 0.1s 0s ease;
+}
+
+.navbar-nav li::after {
     content: '';
     position: absolute;
     width: 0; 
@@ -17,13 +22,18 @@ ul li::after {
     transition: width 0.3s 0s ease; 
 }
 
-ul li:hover::after {
+.navbar-nav li:hover::after {
     width: 100%;    
 }
 
 .category{
     position: relative;
     cursor: pointer;
+}
+
+.category:hover{
+    font-weight: bold;
+    transition: font-weight 0.1s 0s ease;
 }
 
 .category::after{
