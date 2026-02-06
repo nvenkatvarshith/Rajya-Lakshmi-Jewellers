@@ -53,7 +53,7 @@ function Footer() {
     };
 
     return (
-        <div className="newsletter mt-5 px-4">
+        <div className="newsletter mt-5 px-4 small">
             <div className='container'>
                 <div className="d-flex text-center justify-content-center border border-start-0 border-end-0 py-5">
                     <div className="w-lg-25">

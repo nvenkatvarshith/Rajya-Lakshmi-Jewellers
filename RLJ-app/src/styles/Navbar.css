@@ -2,16 +2,16 @@
     text-transform: uppercase;
 }
 
-.navbar-nav li {
+.top-nav li {
     position: relative;
 }
 
-.navbar-nav li:hover{
+.top-nav li:hover{
     font-weight: bold;
     transition: font-weight 0.1s 0s ease;
 }
 
-.navbar-nav li::after {
+.top-nav li::after {
     content: '';
     position: absolute;
     width: 0; 
@@ -22,7 +22,7 @@
     transition: width 0.3s 0s ease; 
 }
 
-.navbar-nav li:hover::after {
+.top-nav li:hover::after {
     width: 100%;    
 }
 
@@ -49,4 +49,8 @@
 
 .category:hover::after {
     width: 100%;    
+}
+
+.top-icons i{
+    cursor: pointer;
 }
