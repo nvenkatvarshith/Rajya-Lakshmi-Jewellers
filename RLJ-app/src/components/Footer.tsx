@@ -54,26 +54,26 @@ function Footer() {
 
     return (
         <div className="newsletter mt-5 px-4">
-            <div className="d-flex text-center justify-content-center border border-start-0 border-end-0 py-5">
-                <div className="w-25">
-                    <h4 id='header-subscribe'>Subscribe to our Newsletter</h4>
-                    <div className="d-flex align-items-center justify-content-center">
-                        <div className="form-floating mb-3 w-75">
-                            <input type="email" className="form-control border border-0 border-bottom border-dark rounded-0" id="email" placeholder="your@gmail.com" />
-                            <label htmlFor="email">Email</label>
-                        </div>
-                        <div className="w-25 ms-1">
-                            <button className="btn btn-dark rounded-0 px-5 py-2" id="subscribe">Subscribe</button>
+            <div className='container'>
+                <div className="d-flex text-center justify-content-center border border-start-0 border-end-0 py-5">
+                    <div className="w-lg-25">
+                        <h4 id='header-subscribe'>Subscribe to our Newsletter</h4>
+                        <div className="d-flex align-items-center justify-content-center">
+                            <div className="form-floating mb-3 w-75">
+                                <input type="email" className="form-control border border-0 border-bottom border-dark rounded-0" id="email" placeholder="your@gmail.com" />
+                                <label htmlFor="email">Email</label>
+                            </div>
+                            <div className="w-25 ms-1">
+                                <button className="btn btn-dark rounded-0 px-lg-5 py-2" id="subscribe">Subscribe</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className='container mt-5 footer'>
-                <div className='row justify-content-center'>
+                <div className='row justify-content-center mt-5 footer'>
                     {getFooterSections()}
 
                     <div className='col-lg-3'>
-                        <h4 className='mb-4'>Follow Us</h4>
+                        <h4 className='mb-lg-4'>Follow Us</h4>
                         <span className='fs-4'>
                             <i className="fa-brands fa-instagram me-3"></i>
                             <i className="fa-brands fa-facebook-f me-3"></i>
