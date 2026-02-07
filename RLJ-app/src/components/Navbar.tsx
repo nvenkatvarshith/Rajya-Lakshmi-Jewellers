@@ -72,7 +72,9 @@ function Navbar() {
                                         return (
                                             <li className="nav-item ms-2">
                                                 <strong>{section.title}</strong>
-                                                {subCategories(section)}
+                                                <ul className="list-unstyled">
+                                                    {subCategories(section)}
+                                                </ul>
                                             </li>
                                         )
                                     })
