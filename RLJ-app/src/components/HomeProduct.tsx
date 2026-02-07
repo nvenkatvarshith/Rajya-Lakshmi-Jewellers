@@ -61,10 +61,10 @@ function HomeProduct(){
     };
     
     return (
-        <div className="d-flex justify-content-center mt-4">
+        <div className="row justify-content-center mt-4 me-0">
         {rljProducts.map((product)=>{
             return (
-                <div className="card border-0 p-2" id={product.id} onMouseOver={() => cardCSSUpdate(product.id)} onMouseOut={() => cardCSSBtnRemove(product.id)} style={{width: '21.5rem'}}>
+                <div className="col-lg-3 col-md-6 col-sm-12 card border-0 p-2" id={product.id} onMouseOver={() => cardCSSUpdate(product.id)} onMouseOut={() => cardCSSBtnRemove(product.id)} style={{width: '21.5rem'}}>
                     <div className='overflow-hidden'>
                         <img src={product.img} className="card-img-top" alt="Ring"/>
                     </div>
