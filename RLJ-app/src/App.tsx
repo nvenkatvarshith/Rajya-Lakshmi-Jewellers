@@ -2,14 +2,16 @@ import './App.css'
 import Navbar from './components/Navbar.tsx'
 import Footer from './components/Footer.tsx'
 import HomeProduct from './components/HomeProduct.tsx'
-import Collection from './components/Collection.tsx'
+import FavoriteCollection from './components/FavoriteCollection.tsx'
+import Collection from './pages/Collection.tsx'
 
 function App() {
   return (
     <>
       <div>
         <Navbar/>
-        <HomeProduct/>
+        {/* <HomeProduct/>
+        <FavoriteCollection/> */}
         <Collection/>
         <Footer/>
       </div>

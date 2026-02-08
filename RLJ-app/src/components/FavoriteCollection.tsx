@@ -1,6 +1,6 @@
-import './../styles/Collection.css';
+import './../styles/FavoriteCollection.css';
 
-function Collection(){
+function FavoriteCollection(){
     const collections = [
         {
             img: "https://www.cartier.com/on/demandware.static/-/Library-Sites-CartierSharedLibraryAESA-BGTJ/default/dw10158f67/homepage/2026/1%20January/Vday/DOUBLE_MODULE_JEWERLY_1680x1377.jpg",
@@ -35,4 +35,4 @@ function Collection(){
     );
 }
 
-export default Collection;
+export default FavoriteCollection;
