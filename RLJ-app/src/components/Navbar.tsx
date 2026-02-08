@@ -52,14 +52,22 @@ function Navbar() {
         ],
     };
 
-    const navBarMobileHtml = () => {
+    const navBarMobileHtml = (deviceType:string) => {
         return  navbarData.menuItems.map((navItem) => {
                 if(navItem.type === "link"){
-                    return (   
-                        <li className="nav-item">
-                            <a className="nav-link" href={navItem.url}>{navItem.label}</a>
-                        </li>
-                    )
+                    if(deviceType === "mobile"){
+                        return (   
+                            <li className="nav-item">
+                                <a className="nav-link" href={navItem.url}>{navItem.label}</a>
+                            </li>
+                        )
+                    }else if(deviceType === "desktop"){
+                        return (   
+                            <li className="nav-item">
+                                <a className="nav-link category" href={navItem.url}>{navItem.label}</a>
+                            </li>
+                        )
+                    }
                 }else if(navItem.type === "dropdown"){
                     return (
                         <li className="nav-item dropdown">
@@ -112,7 +120,7 @@ function Navbar() {
                                 </div>
                                 <div className="offcanvas-body">
                                     <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                       {navBarMobileHtml()}
+                                       {navBarMobileHtml("mobile")}
                                     </ul>
                                 </div>
                             </div>
@@ -143,7 +151,7 @@ function Navbar() {
                 <div className="container-fluid mt-2">
                     <nav className="navbar navbar-expand-lg d-none d-lg-flex justify-content-center align-items-center">
                         <ul className="navbar-nav gap-4"> 
-                            {navBarMobileHtml()}
+                            {navBarMobileHtml("desktop")}
                         </ul>
                     </nav>
                 </div>

@@ -43,7 +43,7 @@
     height: 3px;  
     bottom: 0;
     left: 0;
-    background-color: rgba(255, 0, 0, 1);
+    background-color: rgb(255, 0, 0);
     transition: width 0.3s 0s ease; 
 }
 
