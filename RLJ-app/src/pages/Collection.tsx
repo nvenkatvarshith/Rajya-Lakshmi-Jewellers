@@ -1,5 +1,11 @@
+import { useEffect, useState } from 'react';
 import './../styles/pages/Collection.css'
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
 function Collection(){
+    const {category} = useParams();
+    console.log(category);
 
     const rljProducts = [
         {
@@ -44,11 +50,29 @@ function Collection(){
         }
     ];
 
-    const collectionInfo = {
-        img : "https://www.cartier.com/on/demandware.static/-/Library-Sites-CartierSharedLibraryAESA-BGTJ/default/dw2e94cf62/plp/jewellery/collections/clash-de-cartier/plp-fullscreen/PLP-Fullscreen_JWL_all-coll_clash-desktop.jpg",
-        name: "CLASH DE CARTIER",
-        description: "Clash de Cartier shakes up the Maison's aesthetic heritage. Beads and studs create a singular mesh for this signature jewellery collection.,"
-    };
+    interface Collection{
+        img: string;
+        name: string;
+        description: string;
+    }
+
+    const [allCollectionInfo,setAllCollectionInfo] = useState<Collection[]>([]);
+    const fetchCollectionInfo = async () => {
+        try{
+            const {data} = await axios.get("http://localhost:4000/rljCollections");
+            setAllCollectionInfo(data);
+        }catch(error){
+            console.log(error);
+        }
+    }
+    
+    let collectionInfo = allCollectionInfo.find((collection:Collection) => {
+            return collection.name.toLowerCase() === category?.toLowerCase();
+        });
+
+    useEffect(()=>{
+        fetchCollectionInfo();
+    },[]);
 
     const cardCSSUpdate = (id:string) => {
         document.getElementById(id)?.classList.remove('border-0');
@@ -81,10 +105,10 @@ function Collection(){
 
     return (
         <div className="container-fluid p-0">
-            <div className="collection-description vh-100 text-center text-light d-flex justify-content-center align-items-end" style={{backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%), url(${collectionInfo.img})`,}}>
+            <div className="collection-description vh-100 text-center text-light d-flex justify-content-center align-items-end" style={{backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%), url('https://www.cartier.com/on/demandware.static/-/Library-Sites-CartierSharedLibraryAESA-BGTJ/default/dw6f2a7936/plp/2026/vday-2026/header-fullscreen/PLP-Fullscreen_VDAY2026_BI_jwl-must-haves-desktop-AR.jpg')`,}}>
                 <div className='collection-content w-50 pb-4'>
-                    <h3 className='text-uppercase py-2'>{collectionInfo.name}</h3>
-                    <p>{collectionInfo.description}</p>
+                    <h3 className='text-uppercase py-2'>{collectionInfo?.name}</h3>
+                    <p>{collectionInfo?.description}</p>
                 </div>
             </div>
             

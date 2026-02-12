@@ -1,15 +1,16 @@
 import './../styles/Navbar.css'
+import { Link } from 'react-router-dom'
+import logo from './../assets/rlj_logo.png'
 
 function Navbar() {
 
     const navbarData = {
         logo: {
-            src: "./rlj_logo.png",
+            src: logo,
             alt: "Rajya Lakshmi Silver Jewellery",
             link: "/"
         },
         menuItems: [
-            { label: "HOME", url: "/", type: "link" },
             { label: "NECKLACE", url: "/necklace", type: "link" },
             { label: "EARRINGS", url: "/earrings", type: "link" },
             { label: "BANGLES", url: "/bangles", type: "link" },
@@ -58,13 +59,13 @@ function Navbar() {
                     if(deviceType === "mobile"){
                         return (   
                             <li className="nav-item">
-                                <a className="nav-link" href={navItem.url}>{navItem.label}</a>
+                                <Link className="nav-link" to={`collections\\${navItem.label}`}>{navItem.label}</Link>
                             </li>
                         )
                     }else if(deviceType === "desktop"){
                         return (   
                             <li className="nav-item">
-                                <a className="nav-link category" href={navItem.url}>{navItem.label}</a>
+                                <Link className="nav-link category" to={`collections\\${navItem.label}`}>{navItem.label}</Link>
                             </li>
                         )
                     }
@@ -98,7 +99,7 @@ function Navbar() {
     const subCategories = (section:any) => {
         return section.links.map((link:any) =>{
                 return (
-                    <li><a className="dropdown-item" href={'/'+link}>{link}</a></li>
+                    <li><Link className="dropdown-item" to={`collections\\${link}`}>{link}</Link></li>
                 )
             }
         )
@@ -120,6 +121,9 @@ function Navbar() {
                                 </div>
                                 <div className="offcanvas-body">
                                     <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                        <li className="nav-item">
+                                            <Link className="nav-link category text-uppercase" to='/'>Home</Link>
+                                        </li>
                                        {navBarMobileHtml("mobile")}
                                     </ul>
                                 </div>
@@ -151,6 +155,9 @@ function Navbar() {
                 <div className="container-fluid mt-2">
                     <nav className="navbar navbar-expand-lg d-none d-lg-flex justify-content-center align-items-center">
                         <ul className="navbar-nav gap-4"> 
+                            <li className="nav-item">
+                                <Link className="nav-link category text-uppercase" to='/'>Home</Link>
+                            </li>
                             {navBarMobileHtml("desktop")}
                         </ul>
                     </nav>
