@@ -1,6 +1,7 @@
 import './../styles/HomeProduct.css'
 import FavoriteCollection from './FavoriteCollection';
 import BannerSlider from './BannerSlider';
+import { Link } from 'react-router-dom';
 
 function HomeProduct(){
     interface Product {
@@ -76,7 +77,7 @@ function HomeProduct(){
                                 <h5 className="card-title text-uppercase">{product.name}</h5>
                                 <p className="card-text">{product.details}</p>
                                 <p className="card-text">{`${product.currency} ${product.price} `}</p>
-                                <button className='btn btn-dark rounded-0 w-100 text-uppercase invisible discover' id={`discover-${product.id}`}>discover</button>
+                                <Link className='text-decoration-none text-light' to='/product-description'><button className='btn btn-dark rounded-0 w-100 text-uppercase invisible discover' id={`discover-${product.id}`}>discover</button></Link>
                             </div>
                         </div>
                     );
