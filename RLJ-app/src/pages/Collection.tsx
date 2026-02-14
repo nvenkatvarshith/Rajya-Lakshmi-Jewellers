@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './../styles/pages/Collection.css'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 function Collection(){
     const {category} = useParams();
@@ -95,7 +96,7 @@ function Collection(){
                             <h6 className="card-title text-uppercase">{product.name}</h6>
                             <p className="card-text">{product.description}</p>
                             <p className="card-text fw-semibold">{`${product.currency} ${product.price} `}</p>
-                            <button className='btn btn-dark rounded-0 w-100 text-uppercase invisible discover' id={`discover-${product.id}`}>discover</button>
+                            <Link className='text-decoration-none text-light' to='/product-description'><button className='btn btn-dark rounded-0 w-100 text-uppercase invisible discover' id={`discover-${product.id}`}>discover</button></Link>
                         </div>
                     </div>
                 );
