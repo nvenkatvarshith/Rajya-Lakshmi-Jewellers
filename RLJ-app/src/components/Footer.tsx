@@ -37,12 +37,12 @@ function Footer() {
     const getFooterSections = () => {
         return footerData.sections.map((section) =>{
             return (
-                <div className='col-lg-3'>
+                <div className='col-lg-3' key={section.id}>
                     <h5>{section.headline}</h5>
                     <ul className='list-unstyled mt-4'>
                         {section.links.map((link) =>{
                                 return (
-                                    <li className='mb-3 fw-lighter'><a className='py-1' href={link.path}>{link.text}</a></li>
+                                    <li className='mb-3 fw-lighter' key={link.path}><a className='py-1' href={link.path}>{link.text}</a></li>
                                 )
                             }
                         )}

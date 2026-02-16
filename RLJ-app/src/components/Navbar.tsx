@@ -4,6 +4,12 @@ import logo from './../assets/rlj_logo.png'
 
 function Navbar() {
 
+    interface NavItem{
+        label: string;
+        url: string;
+        type: string;
+    }
+
     const navbarData = {
         logo: {
             src: logo,
@@ -58,20 +64,20 @@ function Navbar() {
                 if(navItem.type === "link"){
                     if(deviceType === "mobile"){
                         return (   
-                            <li className="nav-item">
+                            <li className="nav-item" key={navItem.label}>
                                 <Link className="nav-link" to={`collections\\${navItem.label}`}>{navItem.label}</Link>
                             </li>
                         )
                     }else if(deviceType === "desktop"){
                         return (   
-                            <li className="nav-item">
-                                <Link className="nav-link category" to={`collections\\${navItem.label}`}>{navItem.label}</Link>
+                            <li className="nav-item" key={navItem.label}>
+                                <Link className="nav-link category" onMouseOver={() => showSubCategories(navItem)} to={`collections\\${navItem.label}`}>{navItem.label}</Link>
                             </li>
                         )
                     }
                 }else if(navItem.type === "dropdown"){
                     return (
-                        <li className="nav-item dropdown">
+                        <li className="nav-item dropdown" key={navItem.label}>
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {navItem.label}
                             </a>
@@ -79,7 +85,7 @@ function Navbar() {
                                 {
                                     navItem.sections?.map((section) =>{
                                         return (
-                                            <li className="nav-item ms-2">
+                                            <li className="nav-item ms-2" key={section.title}>
                                                 <strong>{section.title}</strong>
                                                 <ul className="list-unstyled">
                                                     {subCategories(section)}
@@ -96,10 +102,14 @@ function Navbar() {
         )
     };
 
+    const showSubCategories = (navItem:NavItem) => {
+        console.log("hovered on:"+navItem.label);
+    };
+
     const subCategories = (section:any) => {
         return section.links.map((link:any) =>{
                 return (
-                    <li><Link className="dropdown-item" to={`collections\\${link}`}>{link}</Link></li>
+                    <li key={link}><Link className="dropdown-item" to={`collections\\${link}`}>{link}</Link></li>
                 )
             }
         )

@@ -19,7 +19,7 @@ function FavoriteCollection(){
             {
                 collections.map((collection) => {
                     return (
-                        <div className='col-lg-6 col-12 mb-4 mb-md-0'>
+                        <div className='col-lg-6 col-12 mb-4 mb-md-0' key={collection.name}>
                             <img src={collection.img} alt={collection.name} className="w-100" />
                             <div className="content text-center mt-3">
                                 <h4 className="text-uppercase">{collection.name}</h4>
