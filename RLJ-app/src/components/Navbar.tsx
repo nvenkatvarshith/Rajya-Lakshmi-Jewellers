@@ -1,6 +1,7 @@
 import './../styles/Navbar.css'
 import { Link } from 'react-router-dom'
 import logo from './../assets/rlj_logo.png'
+import { useState } from 'react';
 
 function Navbar() {
 
@@ -59,6 +60,126 @@ function Navbar() {
         ],
     };
 
+    interface product{
+        id: number;
+        title: string;
+        imageUrl: string;
+        description: string;
+    }
+
+    interface SubCategories {
+        name: string;
+        isActive: boolean;
+        products: product[]
+    }
+
+    const rljNavigationCatalog = [
+        {
+            category: "HOME",
+            isActive: false,
+            subCategories: []
+        },
+        {
+            category: "NECKLACE",
+            isActive: true,
+            subCategories: [
+            {
+                name: "ALL CREATIONS",
+                isActive: true,
+                products: [
+                {
+                    id: 1,
+                    title: "INDOMPTABLES BY CARTIER",
+                    imageUrl: "https://www.cartier.com/on/demandware.static/-/Sites-cartier-storefront-IND/default/dw5951140f/MegaMenu/HJ_2022/07_PIECES%20DISPO%20EN%20LIGNE/HAUTE-JO_VIGNETTES_400x400_CAR_CRH6038815.png",
+                    description: "A dual-head bracelet featuring a zebra and a panther."
+                },
+                {
+                    id: 2,
+                    title: "PANTHER",
+                    imageUrl: "https://www.cartier.com/on/demandware.static/-/Sites-cartier-storefront-IND/default/dwd777a46b/MegaMenu/HJ_2022/07_PIECES%20DISPO%20EN%20LIGNE/La%20panthere%20animal%20emblematique.png",
+                    description: "The iconic Cartier Panthère in a diamond-paved brooch or figure."
+                },
+                {
+                    id: 3,
+                    title: "FLORA AND FAUNA",
+                    imageUrl: "https://www.cartier.com/on/demandware.static/-/Sites-cartier-storefront-IND/default/dwcd8bd957/MegaMenu/HJ_2022/07_PIECES%20DISPO%20EN%20LIGNE/Faune%20et%20Flore.png",
+                    description: "Intricate floral designs with emeralds and rubies."
+                },
+                {
+                    id: 4,
+                    title: "ARCHITECTURE AND PURITY",
+                    imageUrl: "https://www.cartier.com/on/demandware.static/-/Sites-cartier-storefront-IND/default/dwa00e581e/MegaMenu/HJ_2022/07_PIECES%20DISPO%20EN%20LIGNE/Architecture%20de%20lumi%C3%A8re.png",
+                    description: "A multi-layered diamond necklace with geometric precision."
+                },
+                {
+                    id: 5,
+                    title: "GEOMETRY AND CONTRASTS",
+                    imageUrl: "https://www.cartier.com/on/demandware.static/-/Sites-cartier-storefront-IND/default/dwb364225d/MegaMenu/HJ_2022/07_PIECES%20DISPO%20EN%20LIGNE/Geometrie%20et%20contrastes.png",
+                    description: "Art-deco inspired ring featuring coral and onyx accents."
+                },
+                {
+                    id: 6,
+                    title: "FINE JEWELLERY WATCHES",
+                    imageUrl: "https://www.cartier.com/on/demandware.static/-/Sites-cartier-storefront-IND/default/dw988eb922/MegaMenu/HJ_2022/07_PIECES%20DISPO%20EN%20LIGNE/Montres%20precieuses.png",
+                    description: "A luxury timepiece integrated into a high-jewellery gold bracelet."
+                }
+                ]
+            },
+            {
+                name: "LATEST COLLECTIONS",
+                isActive: false,
+                products: []
+            },
+            {
+                name: "MARKERS OF STYLE",
+                isActive: false,
+                products: []
+            },
+            {
+                name: "ICONIC PANTHERE",
+                isActive: false,
+                products: []
+            },
+            {
+                name: "LIVING LEGACY",
+                isActive: false,
+                products: []
+            },
+            {
+                name: "EXCEPTIONAL STONES",
+                isActive: false,
+                products: []
+            }
+            ]
+        },
+        {
+            category: "EARRINGS",
+            isActive: false,
+            subCategories: []
+        },
+        {
+            category: "BANGLES",
+            isActive: false,
+            subCategories: []
+        },
+        {
+            category: "PEARLS",
+            isActive: false,
+            subCategories: []
+        },
+        {
+            category: "BEADS",
+            isActive: false,
+            subCategories: []
+        },
+        {
+            category: "MORE CATEGORIES",
+            isActive: false,
+            hasDropdown: true,
+            subCategories: []
+        }
+        ];
+
     const navBarMobileHtml = (deviceType:string) => {
         return  navbarData.menuItems.map((navItem) => {
                 if(navItem.type === "link"){
@@ -102,9 +223,23 @@ function Navbar() {
         )
     };
 
+    let [currentDisplayCat, setCurrentDisplayCat] = useState<SubCategories[]>([]);
+    let [currentSubSubProds, setCurrentSubSubProds] = useState<product[]>();
     const showSubCategories = (navItem:NavItem) => {
-        console.log("hovered on:"+navItem.label);
+        document.getElementById("subsubcat")?.classList.remove("d-none");
+        //subsubcat?.classList.contains('d-none')?subsubcat.classList.remove("d-none"):subsubcat?.classList.add("d-none");
+        rljNavigationCatalog.map((catalog)=>{
+            if(catalog.category === navItem.label){
+                setCurrentDisplayCat(catalog.subCategories);
+            }else{
+                console.log("no catalog");
+            }
+        });
     };
+
+    const hideSubCat = () => {
+        document.getElementById("subsubcat")?.classList.add("d-none");
+    }
 
     const subCategories = (section:any) => {
         return section.links.map((link:any) =>{
@@ -113,6 +248,41 @@ function Navbar() {
                 )
             }
         )
+    }
+
+    const showSubProducts = (products:product[]) => {
+        document.getElementById('subProducts')?.classList.remove('d-none');
+        setCurrentSubSubProds(products);
+    }
+
+    const showProducts = () => {
+        
+        return (
+            <div className='container-fluid d-none' id='subProducts'>
+                <div className='row'>
+                    {currentSubSubProds?.map((product) => {
+                        return (
+                            <div className='col-lg-2 text-center'>
+                                <img src={product.imageUrl} alt={product.title} className='w-100' />
+                                <div className='content mt-1'>
+                                    <h6>{product.title}</h6>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+        )
+    }
+
+    const showSupercat = () => {
+        return currentDisplayCat.map((current) => {
+            return (   
+                <li className="nav-item" key={current.name}>
+                    <Link className="nav-link category" onMouseOver={()=>showSubProducts(current.products)} to={`collections\\${current.name}`}>{current.name}</Link>
+                </li>
+            )
+        });
     }
 
     return (
@@ -171,6 +341,15 @@ function Navbar() {
                             {navBarMobileHtml("desktop")}
                         </ul>
                     </nav>
+                </div>
+
+                <div className='container-fluid d-none' id='subsubcat' onMouseLeave={hideSubCat}>
+                    <nav className="navbar navbar-expand-lg d-none d-lg-flex justify-content-center align-items-center">
+                        <ul className="navbar-nav gap-4"> 
+                            {showSupercat()}
+                        </ul>
+                    </nav>
+                    {showProducts()}
                 </div>
             </div>
         </div>
