@@ -2,6 +2,7 @@ import './../styles/HomeProduct.css'
 import FavoriteCollection from './FavoriteCollection';
 import BannerSlider from './BannerSlider';
 import { Link } from 'react-router-dom';
+import SingleCollection from './SingleCollection';
 
 function HomeProduct(){
     interface Product {
@@ -84,6 +85,7 @@ function HomeProduct(){
                 })}
             </div>
             <FavoriteCollection/>
+            <SingleCollection />
         </div>
     );
 }
