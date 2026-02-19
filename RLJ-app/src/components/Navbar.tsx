@@ -328,7 +328,7 @@ function Navbar() {
                     </div>
                     <div className="col-2 col-lg-3 text-end top-icons fs-6">
                         <i className="fa-regular fa-heart mx-2"></i>
-                        <i className="fa-regular fa-user mx-2 d-none d-md-inline"></i>
+                        <Link to='/login' className='text-dark'><i className="fa-regular fa-user mx-2 d-none d-md-inline"></i></Link>
                         <i className="fa-solid fa-location-dot mx-2 d-none d-md-inline"></i>
                     </div>
                 </div>

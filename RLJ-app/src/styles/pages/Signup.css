@@ -1,0 +1,9 @@
+#signup-form{
+    background-color: #F9F9F9;
+}
+
+#signup-form .form-control, .form-select{
+    background-color: #F9F9F9;
+    border:none;
+    box-shadow: none;
+}

@@ -1,0 +1,9 @@
+#login-form{
+    background-color: #F9F9F9;
+}
+
+#login-form .form-control{
+    background-color: #F9F9F9;
+    border:none;
+    box-shadow: none;
+}
