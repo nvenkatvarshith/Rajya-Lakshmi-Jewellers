@@ -1,15 +1,34 @@
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './../styles/pages/Signup.css';
 
 function Signup(){
     const {register,handleSubmit,formState:{errors},watch} = useForm();
-
+    
     const emailValue = watch("email");
     const passwordValue = watch("password");
-
-    const signup = (formValues:any) => {
+    
+    const navigate = useNavigate();
+    
+    const signup = async (formValues:any) => {
         console.log(formValues);
+        const requestBody = {
+            email: formValues.email,
+            firstname: formValues.firstname,
+            lastname: formValues.lastname,
+            mobileNo:formValues.mobileNo,
+            password: formValues.password
+        };
+        try{
+            const {data} = await axios.post("http://localhost:4000/register", requestBody);
+            console.log(data);
+            navigate('/login');
+        }catch(error){
+            console.log(error);
+        }
+
     }
 
     return (

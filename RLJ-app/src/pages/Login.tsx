@@ -1,12 +1,31 @@
 import { useForm } from 'react-hook-form';
 import './../styles/pages/Login.css';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 function Login(){
-    const { register, handleSubmit, formState:{errors}, watch} = useForm();
+    const { register, handleSubmit, formState:{errors}} = useForm();
+    const navigate = useNavigate();
 
-    const login = (formValues:any) => {
-        console.log(formValues);
+    const login = async (formValues:any) => {
+        const requestBody = {
+            email: formValues.email,
+            password: formValues.password,
+        };
+        try{
+            const response = await fetch("http://localhost:4000/login",{
+                method: "POST",
+                headers: {
+                    'Content-type': "application/json"
+                },
+                body: JSON.stringify(requestBody)
+            })
+            const data = await response.json();
+            console.log(data);
+            navigate("/");
+        }catch(error){
+            console.log(error);
+        }
     };
 
     return (
